@@ -1,18 +1,24 @@
 const { SlippiGame } = require("@slippi/slippi-js");
+const fs = require('fs');
 
 //Take slippiID to distinguish player vs opponent
 //var slippiID = prompt("Enter your slippi ID (ex: XXX#000): ");
 const slippiID = "MON#864"
 
+//Slippi Folder Path
+//const slippiFolderPath = 
+
 //set up arrays to for later dat file
+//user arrays
 const userCharID = [];
-const oppCharID = [];
-const StageID = [];
 const userAvgDP = [];
+//opp arrays
+const oppCharID = [];
 const oppAvgDP = [];
+//neutral arrays
+const StageID = [];
 
-
-const game = new SlippiGame("Game_20250116T162103.slp");
+const game = new SlippiGame("test.slp");
 
 // Get game settings – stage, characters, etc
 const settings = game.getSettings();
@@ -20,7 +26,7 @@ console.log(settings);
 
 // Get metadata - start time, platform played on, etc
 const metadata = game.getMetadata();
-//console.log(metadata);
+console.log(metadata);
 
 // Get computed stats - openings / kill, conversions, etc
 const stats = game.getStats();
@@ -41,7 +47,16 @@ if (slippiID == settings.players[0].connectCode) {
 }
 
 
-const playercharid = settings.players[1].characterID;
-console.log(playercharid);
-console.log(settings.players[0].characterId);
-console.log(stats.overall[userIndex].openingsPerKill)
+
+console.log(settings.players[userIndex].characterId);
+console.log(stats.overall[userIndex].openingsPerKill);
+
+
+
+console.log(settings.matchInfo.matchId);
+
+console.log(settings.players.length);
+
+console.log(frames[-1].players);
+
+console.log(metadata);

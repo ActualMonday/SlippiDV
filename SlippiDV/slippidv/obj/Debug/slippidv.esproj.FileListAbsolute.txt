@@ -1,0 +1,2 @@
+C:\Users\Hugh Sharp\Documents\GitHub\SlippiDV\SlippiDV\SlippiDV\obj\Debug\slippidv.esproj.SuggestedBindingRedirects.cache
+C:\Users\Hugh Sharp\Documents\GitHub\SlippiDV\SlippiDV\SlippiDV\obj\Debug\slippidv.esproj.CoreCompileInputs.cache

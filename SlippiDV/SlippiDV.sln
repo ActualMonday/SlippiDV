@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "slippidv", "SlippiDV\slippidv.esproj", "{C9850F33-5847-45BD-A1F6-48F04AA772ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9850F33-5847-45BD-A1F6-48F04AA772ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8481F5AB-5D23-44B8-AF62-91540E19D6D9}
+	EndGlobalSection
+EndGlobal
