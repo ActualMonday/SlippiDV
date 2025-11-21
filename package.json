@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "@slippi/slippi-js": "^6.7.0"
+    "@slippi/slippi-js": "^6.7.0",
+    "cli-progress": "^3.12.0",
+    "p-limit": "^7.2.0"
   }
 }

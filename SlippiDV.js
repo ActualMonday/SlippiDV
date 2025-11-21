@@ -122,14 +122,25 @@ for (const gameFile of fileList) {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Calulate necesarry things to add data in///////////////////////////////////////////////////////////////
 
+    //cache common references
+    const oU = stats.overall[userIndex];
+    const oO = stats.overall[oppIndex];
+    const aU = stats.actionCounts[userIndex];
+    const aO = stats.actionCounts[oppIndex];
+    const pU = settings.players[userIndex];
+    const pO = settings.players[oppIndex];
+
+    const lCancelU = aU.lCancelCount;
+    const lCancelO = aO.lCancelCount;
+
     //find dmg totals to determine win if timeout
-    var matchUserDmg = stats.overall[userIndex].totalDamage;
-    var matchOppDmg = stats.overall[oppIndex].totalDamage;
+    var matchUserDmg = oU.totalDamage;
+    var matchOppDmg = oO.totalDamage;
 
     //determine who won
-    if(stats.overall[userIndex].killCount > stats.overall[oppIndex].killCount) {
+    if(oU.killCount > oO.killCount) {
             result = 1; //win
-    } else if (stats.overall[userIndex].killCount < stats.overall[oppIndex].killCount) {
+    } else if (oU.killCount < oO.killCount) {
         result = 0; //loss
     } else {//if goes to time
         userLastStockPercent = matchOppDmg - totalStockDmgTaken(userIndex, stats.stocks);
@@ -140,6 +151,7 @@ for (const gameFile of fileList) {
                 result = 0;
             }
     }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Append Data to Dictionary//////////////////////////////////////////////////////////////////////////////
 
@@ -153,37 +165,37 @@ for (const gameFile of fileList) {
 
     //Append User Player Info
     slippiDict.userConnCode.push(slippiID);
-    slippiDict.userChar.push(settings.players[userIndex].characterId);
-    slippiDict.userKills.push(stats.overall[userIndex].killCount);
+    slippiDict.userChar.push(pU.characterId);
+    slippiDict.userKills.push(oU.killCount);
     slippiDict.userDmg.push(matchUserDmg);
-    slippiDict.userIPM.push(stats.overall[userIndex].inputsPerMinute.ratio);
-    slippiDict.userOCR.push(stats.overall[userIndex].successfulConversions.ratio);
-    slippiDict.userOPK.push(stats.overall[userIndex].openingsPerKill.ratio);
-    slippiDict.userNWR.push(stats.overall[userIndex].neutralWinRatio.ratio);
-    slippiDict.userDPO.push(stats.overall[userIndex].damagePerOpening.ratio);
-    slippiDict.userDPS.push(totalStockDmgTaken(oppIndex, stats.stocks) / stats.overall[userIndex].killCount);
-    slippiDict.userLCR.push(stats.actionCounts[userIndex].lCancelCount.success / (stats.actionCounts[userIndex].lCancelCount.success + stats.actionCounts[userIndex].lCancelCount.fail));
-    slippiDict.userWaveDash.push(stats.actionCounts[userIndex].wavedashCount);
-    slippiDict.userDashDance.push(stats.actionCounts[userIndex].dashDanceCount);
-    slippiDict.userGrab.push(stats.actionCounts[userIndex].grabCount.success);
-    slippiDict.userGrabRatio.push(stats.actionCounts[userIndex].grabCount.success / (stats.actionCounts[userIndex].grabCount.success + stats.actionCounts[userIndex].grabCount.fail));
+    slippiDict.userIPM.push(oU.inputsPerMinute.ratio);
+    slippiDict.userOCR.push(oU.successfulConversions.ratio);
+    slippiDict.userOPK.push(oU.openingsPerKill.ratio);
+    slippiDict.userNWR.push(oU.neutralWinRatio.ratio);
+    slippiDict.userDPO.push(oU.damagePerOpening.ratio);
+    slippiDict.userDPS.push(totalStockDmgTaken(oppIndex, stats.stocks) / oU.killCount);
+    slippiDict.userLCR.push(lCancelU.success / (lCancelU.success + lCancelU.fail));
+    slippiDict.userWaveDash.push(aU.wavedashCount);
+    slippiDict.userDashDance.push(aU.dashDanceCount);
+    slippiDict.userGrab.push(aU.grabCount.success);
+    slippiDict.userGrabRatio.push(aU.grabCount.success / (aU.grabCount.success + aU.grabCount.fail));
 
     //Append Opponent Player Info
-    slippiDict.oppConnCode.push(settings.players[oppIndex].connectCode);
-    slippiDict.oppChar.push(settings.players[oppIndex].characterId);
-    slippiDict.oppKills.push(stats.overall[oppIndex].killCount);
-    slippiDict.oppDmg.push(matchUserDmg);
-    slippiDict.oppIPM.push(stats.overall[oppIndex].inputsPerMinute.ratio);
-    slippiDict.oppOCR.push(stats.overall[oppIndex].successfulConversions.ratio);
-    slippiDict.oppOPK.push(stats.overall[oppIndex].openingsPerKill.ratio);
-    slippiDict.oppNWR.push(stats.overall[oppIndex].neutralWinRatio.ratio);
-    slippiDict.oppDPO.push(stats.overall[oppIndex].damagePerOpening.ratio);
-    slippiDict.oppDPS.push(totalStockDmgTaken(userIndex, stats.stocks) / stats.overall[oppIndex].killCount);
-    slippiDict.oppLCR.push(stats.actionCounts[oppIndex].lCancelCount.success / (stats.actionCounts[oppIndex].lCancelCount.success + stats.actionCounts[oppIndex].lCancelCount.fail));
-    slippiDict.oppWaveDash.push(stats.actionCounts[oppIndex].wavedashCount);
-    slippiDict.oppDashDance.push(stats.actionCounts[oppIndex].dashDanceCount);
-    slippiDict.oppGrab.push(stats.actionCounts[oppIndex].grabCount.success);
-    slippiDict.oppGrabRatio.push(stats.actionCounts[oppIndex].grabCount.success / (stats.actionCounts[oppIndex].grabCount.success + stats.actionCounts[oppIndex].grabCount.fail));
+    slippiDict.oppConnCode.push(pO.connectCode);
+    slippiDict.oppChar.push(pO.characterId);
+    slippiDict.oppKills.push(oO.killCount);
+    slippiDict.oppDmg.push(matchOppDmg);
+    slippiDict.oppIPM.push(oO.inputsPerMinute.ratio);
+    slippiDict.oppOCR.push(oO.successfulConversions.ratio);
+    slippiDict.oppOPK.push(oO.openingsPerKill.ratio);
+    slippiDict.oppNWR.push(oO.neutralWinRatio.ratio);
+    slippiDict.oppDPO.push(oO.damagePerOpening.ratio);
+    slippiDict.oppDPS.push(totalStockDmgTaken(userIndex, stats.stocks) / oO.killCount);
+    slippiDict.oppLCR.push(aO.lCancelCount.success / (aO.lCancelCount.success + aO.lCancelCount.fail));
+    slippiDict.oppWaveDash.push(aO.wavedashCount);
+    slippiDict.oppDashDance.push(aO.dashDanceCount);
+    slippiDict.oppGrab.push(aO.grabCount.success);
+    slippiDict.oppGrabRatio.push(aO.grabCount.success / (aO.grabCount.success + aO.grabCount.fail));
 
     console.log(gameFile) //printing matchID showed duplicates, but printing gameFile doesn't... no clue why
 }

@@ -60,3 +60,9 @@ console.log(settings.players.length);
 console.log(frames[-1].players);
 
 console.log(metadata);
+
+
+const data = [1, null, "hello", 0, undefined, { key: null }];
+const filteredData = data.filter(Boolean);
+console.log(filteredData);
+// Output: [1, "hello", { key: "value" }]
