@@ -5,6 +5,7 @@ from layouts.matchup_tab import matchup_tab
 from layouts.timeseries_tab import timeseries_tab
 from utils.data_loader import load_data
 
+
 # --- Receive file path from PyQt ---
 args = curdoc().session_context.request.arguments
 file_path = args.get("file")[0].decode()

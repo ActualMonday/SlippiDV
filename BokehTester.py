@@ -1,9 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov 20 10:58:16 2025
+
+@author: Hugh Sharp
+"""
+
 import json
-from datetime import datetime, timezone
+import numpy as np
 import pandas as pd
 
-"""
-#May not actually need... testing atm
 def columnize(rows):
     if not rows:
         return {}
@@ -15,7 +20,6 @@ def columnize(rows):
             cols[key].append(val)
             
     return cols
-"""
 
 def replace_none(x): #for ease of math operations I want the None's to be nan's
     if x is None:
@@ -30,12 +34,13 @@ def replace_none(x): #for ease of math operations I want the None's to be nan's
 def load_data(path):
 
     with open(path, "r") as f:
-        rows = json.load(f)
+        data = json.load(f)
 
     #column_data = columnize(data)
-    replace_none(rows)
-    df = pd.DataFrame(rows)
-    df["matchStartTime"] = pd.to_datetime(df["matchStartTime"], utc=True)
-    return df
 
+    return replace_none(data)
 
+#test = load_data('C:/Users/Hugh Sharp/Documents/GitHub/SlippiDV/SlippiDV_FullData.json')
+rows = load_data('C:/Users/Hugh Sharp/Documents/GitHub/SlippiDV/SlippiDV_FullData.json')
+df = pd.DataFrame(rows)
+df["matchStartTime"] = pd.to_datetime(df["matchStartTime"], utc=True)
