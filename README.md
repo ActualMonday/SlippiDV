@@ -212,8 +212,3 @@ Bug reports and feedback are welcome.
 - Bokeh visualization library
 - Electron framework
 
----
-
-# License
-
-TBD
