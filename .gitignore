@@ -1,0 +1,20 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# VS / editors
+.vs/
+.ipynb_checkpoints/
+
+# Local data
+app/user_data/
+SlippiDV_FullData.json
+
+# Builds
+bokeh_py_build/
+dist/
+build/

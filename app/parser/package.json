@@ -1,0 +1,9 @@
+{
+  "name": "slippi-parser",
+  "version": "1.0.0",
+  "main": "main.js",
+  "bin": "main.js",
+  "dependencies": {
+    "@slippi/slippi-js": "^9.0.0"
+  }
+}

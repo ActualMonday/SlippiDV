@@ -1,0 +1,76 @@
+/* --- GLOBAL BACKGROUND --- */
+.bk, .bk-root, body {
+    background-color: #0f0f1a !important; /* deep indigo/black */
+    color: #d0d0ff !important; /* soft melee-like light violet */
+}
+
+/* --- WIDGET TEXT (normal) --- */
+.bk-input, .bk-select, .bk-slider-title {
+    background-color: #1a1a2e !important;
+    color: #e0e0ff !important;
+    border: 1px solid #4a4a6a !important;
+}
+
+    /* --- WIDGET HOVER / ACTIVE FIX --- */
+    .bk-input:hover, .bk-input:focus,
+    .bk-select:hover, .bk-select:focus,
+    .bk.bk-input-group:hover,
+    .bk.bk-btn:hover,
+    .bk.bk-btn:focus,
+    .bk.bk-slider:hover .bk-slider-title {
+        background-color: #262640 !important; /* darker hover background */
+        color: #fff7d6 !important; /* melee gold-ish text */
+        border-color: #ffd66b !important; /* gold highlight */
+    }
+
+/* --- BUTTONS (normal) --- */
+.bk-btn {
+    background-color: #1f1f33 !important;
+    color: #e8e8ff !important;
+    border-radius: 6px !important;
+    border: 1px solid #555577 !important;
+}
+
+    /* --- BUTTON HOVER/ACTIVE --- */
+    .bk-btn:hover, .bk-btn:active {
+        background-color: #333366 !important;
+        color: #fff6c7 !important;
+        border-color: #ffcc66 !important;
+    }
+
+/* --- SELECT DROPDOWN PANEL --- */
+.bk-menu, .bk-bs-dropdown-menu {
+    background-color: #1b1b2d !important;
+    color: #f0f0ff !important;
+}
+
+    .bk-menu li:hover {
+        background-color: #333355 !important;
+        color: #fff0c2 !important;
+    }
+
+/* --- SLIDER --- */
+.bk-noUi-connects {
+    background: #ffcc66 !important; /* melee gold */
+}
+
+.bk-noUi-handle {
+    background: #555577 !important;
+    border: 2px solid #ffcc66 !important;
+}
+
+/* --- TOOLBAR --- */
+.bk-toolbar-button {
+    background-color: #1a1a2e !important;
+}
+
+    .bk-toolbar-button:hover {
+        background-color: #262640 !important;
+    }
+
+/* --- TOOLTIP FIX (NO LIGHT BACKGROUND) --- */
+.bk-tooltip {
+    background-color: rgba(20, 20, 40, 0.95) !important;
+    color: #fff0c2 !important; /* gold text */
+    border: 1px solid #ffcc66 !important;
+}

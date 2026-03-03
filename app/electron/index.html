@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SlippiDV</title>
+</head>
+<body>
+    <h2>SlippiDV Game Data Parser</h2>
+
+    <input id="folderInput" placeholder="Select Slippi Folder" style="width: 400px;" readonly />
+    <button id="browseButton">Browse</button>
+    <br><br>
+
+    <input id="idInput" placeholder="Enter Slippi ID (ABC#123)" />
+    <br><br>
+
+    <div>
+        <span class="header">Last Parse Date: </span>
+        <span id="lastParseDate">—</span>
+    </div>
+
+
+    <button id="runButton">Run Parser</button>
+    <button id="cancelButton" style="margin-left:8px;">Cancel Parse</button>
+
+    <progress id="progressBar" value="0" max="100" style="width:550px;"></progress>
+    <span id="progressLabel" style="margin-left:8px; font-family: monospace;"></span>
+
+    <br>
+
+    <p>This parser culminates slippi stats from every frame of every game file <i>as fast as possible</i>, which <b>will still take a while your first time parsing</b>. <br /> Grab a snack or play some melee!</p>
+
+    <p>After parsing, the stats are saved! Future parses only read new games since "last parse date", taking &#8818; 1 min</p>
+
+    <pre id="output" style="margin-top:20px; background:#111; color:#0f0; padding:10px; height:127px; overflow:auto;"></pre>
+
+    <script src="renderer.js"></script>
+
+    <hr>
+
+    <h2>SlippiDV Interactive Stats Dashboard</h2>
+
+    <p>Explore your game stats in the dashboard! The dashboard will only display stats since "last parse date"</p>
+
+    <button id="launchBokehButton" style="margin-top: 10px;">
+        Launch Stats Dashboard
+    </button>
+
+</body>
+</html>
