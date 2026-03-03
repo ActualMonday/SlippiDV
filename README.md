@@ -1,6 +1,6 @@
 # SlippiDV
 
-**SlippiDV** is a local analytics tool for **Super Smash Bros. Melee Slippi replays**.
+Slippi Data Visualizer (**SlippiDV**) is a local analytics tool for **Super Smash Bros. Melee Slippi replays**.
 
 It parses `.slp` replay files and generates an interactive dashboard showing gameplay statistics such as:
 
