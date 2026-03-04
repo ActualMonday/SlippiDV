@@ -8,7 +8,45 @@ let currentParser = null;
 let cancelledByUser = false;
 let hasSignaledDone = false;
 
+// helper to resolve the Bokeh exe path
+function getBokehExePath() {
+
+    // When running from source (npm start)
+    if (!app.isPackaged) {
+        return path.join(__dirname, "../bokeh_app/bokeh_app.exe");
+    }
+
+    // When running from the installed app (electron-builder)
+    return path.join(process.resourcesPath, "bokeh_app.exe");
+}
+
+// helper to resolve database path
+function getDataPaths() {
+    const base = path.join(app.getPath("userData"), "SlippiDV");
+    if (!fs.existsSync(base)) fs.mkdirSync(base, { recursive: true });
+
+    return {
+        base,
+        dbPath: path.join(base, "SlippiDV_FullData.json"),
+        rejectedPath: path.join(base, "rejected_files.txt"),
+        lastParsePath: path.join(base, "last_parse.txt"),
+    };
+}
+
 const lastParseFile = path.join(__dirname, "../user_data/last_parse.txt");
+
+// helper to resolve the Bokeh exe path
+function getBokehExePath() {
+
+    // When running from source (npm start)
+    if (!app.isPackaged) {
+        return path.join(__dirname, "../bokeh_app/bokeh_app.exe");
+    }
+
+    // When running from the installed app (electron-builder)
+    return path.join(process.resourcesPath, "bokeh_app.exe");
+}
+
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -187,16 +225,25 @@ ipcMain.on("run-parser", (_, { slippiFolderPath, slippiID }) => {
 // Bokeh Dashboard Launcher
 ipcMain.on("launch-bokeh", () => {
     try {
-        const exePath = path.join(__dirname, "../bokeh_app/bokeh_app.exe");
 
-        const bokehProc = spawn(exePath, [], {
-            detached: true,   // so it runs independently
-            stdio: "ignore"   // don’t tie Electron to its output
+        const exePath = getBokehExePath();
+
+        // Example: if you later pass the database path
+        const dbPath = getDataPaths().dbPath;
+
+        const bokehProc = spawn(exePath, 
+             ["--db", dbPath]
+        , {
+            detached: true,
+            stdio: "ignore"
         });
 
-        bokehProc.unref();  // let Electron quit without killing Bokeh
+        bokehProc.unref();
+
     } catch (err) {
+
         console.error("Failed to launch Bokeh app:", err);
+
         if (mainWindow) {
             mainWindow.webContents.send("parser-event", {
                 type: "log",

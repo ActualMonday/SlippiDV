@@ -18,7 +18,6 @@
 const fs = require('fs').promises;
 const fsSync = require('fs');
 const path = require('path');
-const cliProgress = require('cli-progress');
 const { createWorkerPool } = require('./workerPool');
 
 const [, , slippiFolderPath, slippiID] = process.argv;
